@@ -37,7 +37,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-      public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'title' => 'required',
@@ -111,14 +111,14 @@ class ProjectController extends Controller
 
 
 
-public function changeStatus(Request $request, Project $project)
-{
-    $project->update([
-        'statut_id' => 2,
-        'date_demande' => Carbon::now() // Met à jour la date du projet à la date actuelle
-    ]);
+    public function changeStatus(Request $request, Project $project)
+    {
+        $project->update([
+            'statut_id' => 2,
+            'date_demande' => Carbon::now() // Met à jour la date du projet à la date actuelle
+        ]);
 
-    return redirect()->back()->with('success', 'Statut du projet mis à jour avec succès.');
-}
+        return redirect()->back()->with('success', 'Statut du projet mis à jour avec succès.');
+    }
 
 }
