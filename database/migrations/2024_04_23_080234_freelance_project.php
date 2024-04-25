@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projet_competences', function (Blueprint $table) {
+        Schema::create('freelance_projects', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('freelance_id'); // Utilisation de unsignedBigInteger pour référencer la clé primaire de la table projects
+            $table->foreign('freelance_id')->references('id')->on('freelances'); // Définition de la contrainte de clé étrangère
 
             $table->unsignedBigInteger('project_id'); // Utilisation de unsignedBigInteger pour référencer la clé primaire de la table projects
             $table->foreign('project_id')->references('id')->on('projects'); // Définition de la contrainte de clé étrangère
-
-            $table->unsignedBigInteger('id_competences');
-            $table->foreign('id_competences')->references('id')->on('competences');
 
             $table->timestamps();
         });
@@ -29,8 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('projet_competences', function (Blueprint $table) {
-            Schema::dropIfExists('projet_competences');
+        Schema::table('freelance_projects', function (Blueprint $table) {
+            Schema::dropIfExists('freelance_projects');
         });
     }
 };

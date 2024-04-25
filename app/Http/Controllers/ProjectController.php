@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Competence;
 use App\Models\Project;
-use App\Models\projetCompetence;
+use App\Models\ProjetCompetence;
 use App\Models\Statut;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -65,7 +65,7 @@ class ProjectController extends Controller
 
         // Enregistrement des compétences sélectionnées pour cette demande
         foreach ($competences as $competenceId) {
-            $comp = new projetCompetence;
+            $comp = new ProjetCompetence;
             $comp->project_id = $project->id;
             $comp->id_competences = $competenceId;
             $comp->save();

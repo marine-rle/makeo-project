@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'MakeoProject'),
+    'name' => env('APP_NAME', 'Makeo Project'),
 
     /*
     |--------------------------------------------------------------------------
