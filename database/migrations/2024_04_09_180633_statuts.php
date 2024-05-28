@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -17,12 +18,28 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Insertion des statuts initiaux
+        // Insertion des statuts initiaux avec les dates actuelles
         DB::table('statuts')->insert([
-            ['name' => 'Brouillon'],
-            ['name' => 'Envoyé'],
-            ['name' => 'En cours de traitement'],
-            ['name' => 'Finie'],
+            [
+                'name' => 'Brouillon',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Envoyé',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'En cours de traitement',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Finie',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 

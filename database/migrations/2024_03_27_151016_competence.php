@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -17,14 +18,43 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        // Insertion des compétences initiales avec les dates actuelles
         DB::table('competences')->insert([
-            ['name' => 'HTML'],
-            ['name' => 'CSS'],
-            ['name' => 'Laravel'],
-            ['name' => 'Symfony'],
-            ['name' => 'Angular'],
-            ['name' => 'PHP'],
-            ['name' => 'Bootstrap'],
+            [
+                'name' => 'HTML',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'CSS',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Laravel',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Symfony',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Angular',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'PHP',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Bootstrap',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
     }
 
@@ -33,8 +63,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('competences', function (Blueprint $table) {
-            Schema::dropIfExists('competences');
-        });
+        Schema::dropIfExists('competences');
     }
 };
