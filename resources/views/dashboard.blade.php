@@ -34,8 +34,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <button type="submit" name="status" value="Envoyé" class="btn btn-outline-success">{{ __('Valider et Envoyer')}}</button>
-                            <button type="submit" name="status" value="Brouillon" class="btn btn-outline-secondary">{{ __('Valider en Brouillon')}}</button>
+                            <button type="submit" name="status" value="2" class="btn btn-outline-success">{{ __('Valider et Envoyer')}}</button>
+                            <button type="submit" name="status" value="1" class="btn btn-outline-secondary">{{ __('Valider en Brouillon')}}</button>
                         </div>
 
                     </form>

@@ -42,19 +42,17 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'competences' => 'required|array', // Assurez-vous que le champ compétences est un tableau
+            'competences' => 'required|array',
         ]);
 
         // Récupérer le statut selon le bouton cliqué
-        $statut = $request->has('status') && $request->status === 'Envoyé' ? Statut::where('name', 'Envoyé')->first() : Statut::where('name', 'Brouillon')->first();
+        $statutId = $request->input('status') == '2' ? 2 : 1;
 
         // Créer une nouvelle instance de Project
         $project = new Project;
         $project->user_id = auth()->user()->id;
         $project->date_demande = now();
-
-        // Associer le statut au projet
-        $project->statut_id = $statut->id;
+        $project->statut_id = $statutId;
 
         $project->title = $request->title;
         $project->description = $request->description;
@@ -74,7 +72,6 @@ class ProjectController extends Controller
         // Rediriger l'utilisateur vers la page de tableau de bord avec un message de succès
         return redirect()->route('dashboard')->with('success', 'Demande créée avec succès!');
     }
-
 
     /**
      * Display the specified resource.
