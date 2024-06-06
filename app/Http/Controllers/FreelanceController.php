@@ -6,6 +6,7 @@ use App\Models\Competence;
 use App\Models\Freelance;
 use App\Models\FreelanceCompetence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class FreelanceController extends Controller
 {
@@ -23,6 +24,7 @@ class FreelanceController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'surname' => 'required',
             'description' => 'required',
             'competences' => 'required|array', // Assurez-vous que le champ compétences est un tableau
         ]);
@@ -33,6 +35,8 @@ class FreelanceController extends Controller
 
         $freelance->name = $request->name;
         $freelance->description = $request->description;
+        $freelance->username = $request->username;
+        $freelance->password = Hash::make($request->password);
         $freelance->save();
 
         // Récupération des compétences sélectionnées

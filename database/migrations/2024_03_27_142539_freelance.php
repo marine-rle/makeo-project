@@ -16,8 +16,26 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('description');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->boolean('admin')->default(false);
             $table->timestamps();
         });
+
+        $passwordHash = Hash::make('A.dmin2004@');
+
+        DB::table('freelances')->insert([
+            [
+                'name' => 'Xavier',
+                'surname' => 'Dupont',
+                'description' => 'Développeur et Administrateur',
+                'username' => 'XavDupont',
+                'password'=> $passwordHash,
+                'admin' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 
     /**
